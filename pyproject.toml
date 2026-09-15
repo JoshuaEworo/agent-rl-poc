@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ling-agent-rl-poc"
+version = "0.1.0"
+description = "Minimal Ling 3.0 Tiny + AReno LoRA agentic RL experiment on AppWorld"
+requires-python = ">=3.11"
+dependencies = [
+  "appworld @ git+https://github.com/StonyBrookNLP/appworld.git@42b5bcf3cd334fee33f0c37c02070a9f5807add5",
+  "openai>=1.50",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

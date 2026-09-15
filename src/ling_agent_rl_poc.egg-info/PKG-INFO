@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: ling-agent-rl-poc
+Version: 0.1.0
+Summary: Minimal Ling 3.0 Tiny + AReno LoRA agentic RL experiment on AppWorld
+Requires-Python: >=3.11
+Requires-Dist: appworld @ git+https://github.com/StonyBrookNLP/appworld.git@42b5bcf3cd334fee33f0c37c02070a9f5807add5
+Requires-Dist: openai>=1.50
+Requires-Dist: PyYAML>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Requires-Dist: pytest-cov>=5; extra == "dev"

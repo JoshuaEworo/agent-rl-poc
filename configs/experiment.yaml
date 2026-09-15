@@ -1,0 +1,41 @@
+model: inclusionAI/Ling-3.0-tiny
+seed: 2026
+train_split: train
+eval_split: dev
+artifact_dir: artifacts/experiment
+
+rollout:
+  max_turns: 12
+  max_tool_calls: 16
+  timeout_seconds: 600
+  max_generated_tokens: 768
+  repeated_action_limit: 3
+  temperature: 0.9
+  step_penalty: 0.005
+
+train:
+  algorithm: gspo
+  train_tasks: 50
+  eval_tasks: 25
+  rollouts_per_task: 4
+  max_steps: 50
+  batch_size: 1
+  micro_batch_size: 1
+  gradient_accumulation: 4
+  lora_rank: 8
+  lora_alpha: 16
+  learning_rate: 0.000001
+  max_prompt_tokens: 2048
+  max_context_length: 16384
+  lora_targets:
+    - q_proj
+    - k_proj
+    - v_proj
+    - f_proj
+    - g_proj
+    - o_proj
+    - q_a_proj
+    - q_b_proj
+    - kv_a_proj_with_mqa
+    - kv_b_proj
+    - dense
