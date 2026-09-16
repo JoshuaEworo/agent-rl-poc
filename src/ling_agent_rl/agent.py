@@ -48,10 +48,13 @@ async def run_episode(
     item: Any | None = None,
 ) -> tuple[Trajectory, list[tuple[list[dict[str, Any]], Any]]]:
     """Run one genuine multi-turn AppWorld episode against an OpenAI endpoint."""
-    started = time.monotonic()
     areno_turns: list[tuple[list[dict[str, Any]], Any]] = []
     with AppWorldEnv(experiment_name) as env:
         metadata = env.reset(task_id)
+
+        # Episode timeout should cover agent interaction,
+        # not AppWorld initialization.
+        started = time.monotonic()
         messages: list[dict[str, Any]] = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": metadata["instruction"]},
